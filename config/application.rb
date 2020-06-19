@@ -31,5 +31,8 @@ module TestManager
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # Don't generate assets for Sprockets
+    config.generators.assets = nil
   end
 end
