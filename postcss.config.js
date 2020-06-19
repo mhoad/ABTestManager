@@ -9,6 +9,7 @@ module.exports = {
       stage: 3
     }),
     require('postcss-nested'),
-    require('postcss-custom-media')
+    require('postcss-custom-media'),
+    require('postcss-selector-not')
   ]
 }
