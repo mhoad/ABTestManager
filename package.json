@@ -11,6 +11,7 @@
   "version": "0.1.0",
   "devDependencies": {
     "postcss-custom-media": "^7.0.8",
+    "postcss-focus": "^4.0.0",
     "postcss-nested": "^4.2.1",
     "postcss-selector-not": "^4.0.0",
     "webpack-dev-server": "^3.11.0"

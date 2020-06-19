@@ -10,6 +10,7 @@ module.exports = {
     }),
     require('postcss-nested'),
     require('postcss-custom-media'),
-    require('postcss-selector-not')
+    require('postcss-selector-not'),
+    require('postcss-focus')
   ]
 }
