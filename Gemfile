@@ -36,6 +36,7 @@ end
 
 group :development do
   gem "annotate"
+  gem "brakeman"
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem "web-console", ">= 3.3.0"
   gem "listen", "~> 3.2"
