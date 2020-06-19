@@ -8,6 +8,7 @@ module.exports = {
       },
       stage: 3
     }),
-    require('postcss-nested')
+    require('postcss-nested'),
+    require('postcss-custom-media')
   ]
 }
