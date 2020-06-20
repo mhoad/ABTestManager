@@ -1,0 +1,45 @@
+.top-nav {
+  background-color: white;
+  box-shadow: var(--shadow);
+  width: 100vw;
+
+  &__container {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 var(--spacing-8);
+    display: flex;
+    height: var(--spacing-16);
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__left, &__right {
+    display: flex;
+  }
+
+  & button > svg {
+    height: 2rem;
+  }
+
+  &__avatar {
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: var(--rounded-full);
+  }
+}
+
+#hamburger-menu, #notifications-menu, #user-menu {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-2);
+  color: var(--grey-600);
+  border-radius: var(--rounded-md);
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+
+  &:hover {
+    background-color: var(--grey-200);
+  }
+}
