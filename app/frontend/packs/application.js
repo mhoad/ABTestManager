@@ -39,3 +39,4 @@ function setup() {
 }
 
 ready(setup);
+import "controllers"
