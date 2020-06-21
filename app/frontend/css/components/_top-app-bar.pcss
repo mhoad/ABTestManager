@@ -1,0 +1,64 @@
+.top-app-bar {
+  background-color: white;
+  width: 100%;
+  box-shadow: var(--shadow);
+
+  &__row {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 var(--spacing-8);
+    display: flex;
+    height: var(--spacing-16);
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__section {
+    display: flex;
+    align-items: center;
+
+    &--align-start {
+
+    }
+
+    &--align-end {
+
+    }
+  }
+
+  &__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-2);
+    color: var(--grey-600);
+    border-radius: var(--rounded-md);
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+
+    &:hover {
+      background-color: var(--grey-200);
+    }
+  }
+
+  &__navigation-icon {
+    height: 2rem;
+  }
+
+  &__title {
+    font-size: var(--text-xl);
+    font-weight: 500;
+    margin-left: var(--spacing-2);
+  }
+
+  &--fixed-adjust {
+    margin-top: var(--spacing-16);
+  }
+}
+
+@media (--medium-viewport) {
+  button[data-button="hamburger"] {
+    display: none;
+  }
+}

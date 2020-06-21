@@ -1,0 +1,36 @@
+.drawer {
+  min-height: 100vh;
+  width: 350px;
+  background-color: var(--grey-800);
+  padding: var(--spacing-3);
+  display: none;
+
+  &__content {
+    display: flex;
+    flex-shrink: 0;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  &__logo {
+    height: 2rem;
+    width: auto;
+    align-self: flex-start;
+    padding: var(--spacing-1) var(--spacing-3);
+  }
+
+  &[data-state="open"] {
+    display: flex;
+  }
+
+  &[data-state="closed"] {
+    display: none;
+  }
+}
+
+@media (--medium-viewport) {
+  /* Always show the drawer on larger devices regardless of state */
+  .drawer[data-state="open"], .drawer[data-state="closed"], .drawer {
+    display: flex;
+  }
+}
