@@ -1,0 +1,51 @@
+.team {
+
+  &__user-info {
+    display: flex;
+  }
+
+  &__avatar-container {
+
+  }
+
+  &__personal-info {
+    margin-left: var(--spacing-3);
+    line-height: var(--leading-5);
+  }
+
+  &__user-name {
+    color: var(--grey-900);
+    font-weight: 500;
+  }
+
+  &__user-email {
+    color: var(--grey-500);
+    font-weight: 400;
+  }
+
+  &__job-title {
+    color: var(--grey-900);
+    font-weight: 500;
+    line-height: var(--leading-5);
+  }
+
+  &__company {
+    color: var(--grey-500);
+    line-height: var(--leading-5);
+    font-weight: 400;
+  }
+
+  &__actions {
+    text-align: right;
+  }
+
+  &__action-link {
+    padding-left: var(--spacing-4);
+    text-decoration: none;
+    color: var(--indigo-600);
+
+    &:hover {
+      color: var(--indigo-800);
+    }
+  }
+}

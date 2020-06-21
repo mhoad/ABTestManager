@@ -1,7 +1,126 @@
-<h2>
-  Team
-</h2>
-<p>
-  Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente perferendis saepe sequi laudantium deleniti dolore optio natus incidunt harum? Placeat, obcaecati? Ipsa explicabo quisquam quod quis quo recusandae ipsam illo!
-</p>
-    
+<div class="screen-title">
+  <h1 class="screen-title__heading">Team</h1>
+  <a class="button button--primary">
+    Add User
+  </a>
+</div>
+
+
+<section class="team">
+  <table class="data-table team__data">
+    <thead class="data-table__header">
+      <tr class="data-table__row">
+        <th class="data-table__heading">Name</th>
+        <th class="data-table__heading">Title</th>
+        <th class="data-table__heading">Role</th>
+        <th class="data-table__heading"></th>
+      </tr>
+    </thead>
+    <tbody class="data-table__body">
+      <tr class="data-table__row">
+        <td class="data-table__data">
+          <div class="team__user-info">
+            <div class="team__avatar-container">
+              <%= image_pack_tag 'users/user-face-1.jpg', class: "top-nav__avatar" %>
+            </div>
+            <div class="team__personal-info">
+              <div class="team__user-name">Richard Lindberg</div>
+              <div class="team__user-email">richard@example.com</div>
+            </div>
+          </div>
+        </td>
+        <td class="data-table__data">
+          <div class="team__job-title">Optimization Consultant</div>
+          <div class="team__company">Looptimize</div>
+        </td>
+        <td class="data-table__data">
+          <div class="pill pill--success">Admin</div>
+        </td>
+        <td class="data-table__data">
+          <div class="team__actions">
+            <%= link_to "Edit", team_path, class: "team__action-link" %>
+            <%= link_to "Remove", team_path, class: "team__action-link" %>
+          </div>
+        </td>
+      </tr>
+      <tr class="data-table__row">
+        <td class="data-table__data">
+          <div class="team__user-info">
+            <div class="team__avatar-container">
+              <%= image_pack_tag 'users/user-face-2.jpg', class: "top-nav__avatar" %>
+            </div>
+            <div class="team__personal-info">
+              <div class="team__user-name">Kristen Clemons</div>
+              <div class="team__user-email">kristen@example.com</div>
+            </div>
+          </div>
+        </td>
+        <td class="data-table__data">
+          <div class="team__job-title">Developer</div>
+          <div class="team__company">HyperGlobalMegaNet</div>
+        </td>
+        <td class="data-table__data">
+          <div class="pill pill--info">Regular</div>
+        </td>
+        <td class="data-table__data">
+          <div class="team__actions">
+            <%= link_to "Edit", team_path, class: "team__action-link" %>
+            <%= link_to "Remove", team_path, class: "team__action-link" %>
+          </div>
+        </td>
+      </tr>
+      <tr class="data-table__row">
+        <td class="data-table__data">
+          <div class="team__user-info">
+            <div class="team__avatar-container">
+              <%= image_pack_tag 'users/user-face-3.jpg', class: "top-nav__avatar" %>
+            </div>
+            <div class="team__personal-info">
+              <div class="team__user-name">Alice Nyugen</div>
+              <div class="team__user-email">alice@example.com</div>
+            </div>
+          </div>
+        </td>
+        <td class="data-table__data">
+          <div class="team__job-title">Project Manager</div>
+          <div class="team__company">HyperGlobalMegaNet</div>
+        </td>
+        <td class="data-table__data">
+          <div class="pill pill--warning">View Only</div>
+        </td>
+        <td class="data-table__data">
+          <div class="team__actions">
+            <%= link_to "Edit", team_path, class: "team__action-link" %>
+            <%= link_to "Remove", team_path, class: "team__action-link" %>
+          </div>
+        </td>
+      </tr>
+      <tr class="data-table__row">
+        <td class="data-table__data">
+          <div class="team__user-info">
+            <div class="team__avatar-container">
+              <%= image_pack_tag 'users/user-face-5.jpg', class: "top-nav__avatar" %>
+            </div>
+            <div class="team__personal-info">
+              <div class="team__user-name">Richard Mundy</div>
+              <div class="team__user-email">richard@example.com</div>
+            </div>
+          </div>
+        </td>
+        <td class="data-table__data">
+          <div class="team__job-title">Marketing Manager</div>
+          <div class="team__company">HyperGlobalMegaNet</div>
+        </td>
+        <td class="data-table__data">
+          <div class="pill pill--success">Admin</div>
+        </td>
+        <td class="data-table__data">
+          <div class="team__actions">
+            <%= link_to "Edit", team_path, class: "team__action-link" %>
+            <%= link_to "Remove", team_path, class: "team__action-link" %>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
