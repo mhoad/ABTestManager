@@ -15,28 +15,6 @@ require("channels")
 //
 const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
 import "./application.pcss"
-
-function handleClick() {
-  if (document.querySelector('.drawer').dataset.state == 'open'){
-    document.querySelector('.drawer').dataset.state = 'closed'
-  } else {
-    document.querySelector('.drawer').dataset.state = 'open'
-  };
-}
-
-
-function ready(fn) {
-  if (document.readyState != 'loading'){
-    fn();
-  } else {
-    document.addEventListener('turbolinks:load', fn);
-  }
-}
-
-function setup() {
-  document.querySelector(`[data-button="hamburger"]`).addEventListener('click', handleClick);
-}
-
-ready(setup);
 import "controllers"
