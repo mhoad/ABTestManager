@@ -10,6 +10,14 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render "layouts/drawer" %>
+    <div class="app-content">
+      <%= render "layouts/top_app_bar" %>
+      <main class="main-content">
+        <div class="top-app-bar--fixed-adjust"> 
+          <%= yield %>
+        </div>
+      </main>
+    </div>
   </body>
 </html>
