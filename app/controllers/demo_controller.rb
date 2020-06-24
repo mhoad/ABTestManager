@@ -3,6 +3,7 @@ class DemoController < ApplicationController
   end
 
   def issues
+    @issues = CreateDemoData.new.issues
   end
 
   def hypotheses

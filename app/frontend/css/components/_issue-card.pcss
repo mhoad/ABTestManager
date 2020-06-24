@@ -1,0 +1,116 @@
+.issue-card {
+  background-color: white;
+  width: 100%;
+  display: block;
+  padding: var(--spacing-4) var(--spacing-6);
+  border-radius: var(--rounded-md);
+  border: 1px solid var(--grey-200);
+  margin-bottom: var(--spacing-1);
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+
+  &:hover {
+    background-color: var(--grey-100);
+    border-color: var(--grey-200);
+
+    & .issue-card__site-area {
+      color: var(--grey-700);
+    }
+
+    & .issue-card__title {
+      color: var(--indigo-500);
+    }
+  }
+
+
+  &__align-top {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__align-bottom {
+    margin-top: var(--spacing-4);
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--text-sm);
+  }
+
+  &__align-start {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+  }
+
+  &__align-end {
+    
+  }
+
+  &__title {
+    color: var(--indigo-600);
+    font-size: var(--text-sm);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 500;
+    margin-right: var(--spacing-5);
+  }
+
+  &__priority {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    background-color: var(--pink-500);
+    color: white;
+    padding: var(--spacing-1);
+    border-radius: var(--rounded-md);
+    
+  }
+
+  &__site-area {
+    color: var(--grey-600);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    margin-left: calc(var(--spacing-2) + 1.25rem);
+  }
+
+  &__actions {
+    display: flex;
+    font-size: var(--text-xs);
+    font-weight: 700;
+
+    & > * {
+      margin-left: var(--spacing-6);
+      display: flex;
+      align-items: center;
+      color: var(--grey-600);
+    }
+  }
+
+  &__icon {
+    margin-right: var(--spacing-1);
+    height: 1.2rem;
+  }
+
+  &__status {
+
+    &-icon {
+      height: 1.25rem;
+      margin-right: var(--spacing-2);
+
+      &--in-progress {
+        color: var(--blue-600);
+      }
+
+      &--paused {
+        color: var(--yellow-600);
+      }
+
+      &--done {
+        color: var(--green-600);
+      }
+
+      &--cancelled {
+        color: var(--red-600);
+      }
+    }
+  }
+}
