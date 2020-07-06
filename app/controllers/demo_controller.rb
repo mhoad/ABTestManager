@@ -6,6 +6,10 @@ class DemoController < ApplicationController
     @issues = CreateDemoData.new.issues
   end
 
+  def single_issue
+    @issue = CreateDemoData.new.issues.sample
+  end
+
   def hypotheses
   end
 

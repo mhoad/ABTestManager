@@ -1,4 +1,4 @@
-<a href="#" class="issue-card">
+<%= link_to issue_path, class: "issue-card" do %>
   <div class="issue-card__align-top">
     <div class="issue-card__align-start">
       <%= raw(status_icon(issue.status)) %>
@@ -48,4 +48,4 @@
     </div>
     
   </div>
-</a> 
+<% end %>
