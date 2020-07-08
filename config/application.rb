@@ -1,4 +1,5 @@
 require_relative "boot"
+require_relative "../lib/account_slug"
 
 require "rails"
 # Pick the frameworks you want:
@@ -34,5 +35,8 @@ module TestManager
 
     # Don't generate assets for Sprockets
     config.generators.assets = nil
+
+    config.middleware.use AccountSlug::Extractor
+    config.middleware.use AccountSlug::LimitSessionToAccountSlugPath
   end
 end

@@ -1,6 +1,10 @@
 module Affordances
   class Issue
     attr_reader :id, :title, :priority, :status, :site_area, :watchers, :comments, :hypotheses
+
+    def to_param
+      id
+    end
   
     def initialize(**args)
       @id = args[:id]

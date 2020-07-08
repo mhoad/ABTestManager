@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
+
   namespace :demo do
     root to: "main#dashboard"
     get '/issues', to: 'main#issues', as: 'issues'
@@ -12,6 +13,12 @@ Rails.application.routes.draw do
     get '/team', to: 'main#team', as: 'team'
     get '/signup', to: 'main#signup', as: 'signup'
   end
+
+  # scope "/:account_id", as: :account do
+  #   root to: "demo/main#dashboard"
+
+  #   resources :issues
+  # end
 
   scope module: :demo do
     root to: "marketing#homepage"
