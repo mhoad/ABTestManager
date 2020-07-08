@@ -12,4 +12,8 @@ Rails.application.routes.draw do
     get '/team', to: 'main#team', as: 'team'
     get '/signup', to: 'main#signup', as: 'signup'
   end
+
+  scope module: :demo do
+    root to: "marketing#homepage"
+  end
 end
