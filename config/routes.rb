@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :accounts
   devise_scope :user do
     get "/sign_in" => "users/sessions#new"
     get "/sign_up" => "users/registrations#new", as: "new_user_registration"
