@@ -34,6 +34,10 @@ group :development, :test do
   gem "standard"
 end
 
+group :test do
+  gem "shoulda-matchers"
+end
+
 group :development do
   gem "annotate"
   gem "brakeman"

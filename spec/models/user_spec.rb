@@ -23,5 +23,31 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context "database" do
+    describe "columns" do
+      it { should have_db_column(:first_name).of_type(:string).with_options(null: false) }
+      it { should have_db_column(:last_name).of_type(:string).with_options(null: false) }
+      it { should have_db_column(:job_title).of_type(:string).with_options(null: false) }
+      it { should have_db_column(:organization).of_type(:string).with_options(null: false) }
+      it { should have_db_column(:remember_created_at).of_type(:datetime) }
+      it { should have_db_column(:reset_password_sent_at).of_type(:datetime) }
+      it { should have_db_column(:reset_password_token).of_type(:string) }
+    end
+
+    describe "indexes" do
+      it { should have_db_index(:email) }
+      it { should have_db_index(:reset_password_token) }
+    end
+  end
+
+  context "active record" do
+    describe "validations" do
+      it { should validate_presence_of(:first_name) }
+      it { should validate_presence_of(:last_name) }
+      it { should validate_presence_of(:job_title) }
+      it { should validate_presence_of(:organization) }
+      it { should validate_presence_of(:email) }
+      it { should validate_presence_of(:password) }
+    end
+  end
 end
