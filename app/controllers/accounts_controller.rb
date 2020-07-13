@@ -1,5 +1,6 @@
 class AccountsController < ApplicationController
   before_action :authenticate_user!
+  skip_before_action :current_account, only: [:new, :create]
 
   def new
     @account = Account.new
@@ -8,7 +9,7 @@ class AccountsController < ApplicationController
   def create
     @account = Account.new(account_params)
     if @account.save
-      redirect_to root_path
+      redirect_to (url_for controller: 'dashboard', action: 'index', script_name: "/#{@account.slug}" )
     else
       render :new
     end

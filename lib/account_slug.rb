@@ -9,11 +9,11 @@ module AccountSlug
   # all our routes, we're "mounting" the Rails app at this URL prefix.
   #
   # The Extractor middleware yanks the prefix off PATH_INFO, moves it to
-  # SCRIPT_NAME, and drops the account id in env['bc3.account.queenbee_id'].
+  # SCRIPT_NAME, and drops the account id in env['testmanager.account.slug'].
   #
   # Rails routes on PATH_INFO and builds URLs that respect SCRIPT_NAME,
   # so the main app is none the wiser. We look up the current account using
-  # env['bc3.account.queenbee_id'] instead of request.subdomains.first
+  # request.env['testmanager.account.slug'] instead of request.subdomains.first
   class Extractor
     PATH_INFO_MATCH = /\A(\/#{AccountSlug::PATTERN})/
 
@@ -29,8 +29,8 @@ module AccountSlug
         request.script_name   = $1
         request.path_info     = $'.empty? ? '/' : $'
 
-        # Stash the account's Queenbee ID.
-        env['bc3.account.queenbee_id'] = AccountSlug.decode($2)
+        # Stash the account's slug.
+        env['testmanager.account.slug'] = AccountSlug.decode($2)
       end
 
       @app.call env
@@ -44,7 +44,7 @@ module AccountSlug
     end
 
     def call(env)
-      env['rack.session.options'][:path] = env['SCRIPT_NAME'] if env['bc3.account.queenbee_id']
+      env['rack.session.options'][:path] = env['SCRIPT_NAME'] if env['testmanager.account.slug']
       @app.call env
     end
   end
