@@ -7,10 +7,11 @@ class AccountsController < ApplicationController
   end
 
   def create
-    @account = Account.new(account_params)
-    if @account.save
-      redirect_to (url_for controller: 'dashboard', action: 'index', script_name: "/#{@account.slug}" )
+    result = CustomerSignup.call(account_params: account_params, user: current_user)
+    if result.success?
+      redirect_to account_dashboard_path(script_name: safe_account_script(result.account.slug))
     else
+      flash.now[:message] = result.message
       render :new
     end
   end
@@ -19,5 +20,9 @@ class AccountsController < ApplicationController
 
   def account_params
     params[:account].permit(:organization_name)
+  end
+
+  def safe_account_script(account_slug)
+    "/#{'%07d' % account_slug}"
   end
 end

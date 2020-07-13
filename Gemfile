@@ -38,6 +38,7 @@ end
 
 group :test do
   gem "shoulda-matchers"
+  gem 'shoulda-callback-matchers'
 end
 
 group :development do
@@ -55,3 +56,4 @@ end
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
+gem "interactor-rails"

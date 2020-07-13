@@ -15,6 +15,5 @@
 FactoryBot.define do
   factory :account do
     organization_name { "HyperGlobalMegaNet" }
-    slug { "12345678" }
   end
 end

@@ -23,6 +23,12 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  it "has a valid factory" do
+    expect(build(:user)).to be_valid
+  end
+
+  let(:user) { build(:user) }
+
   context "database" do
     describe "columns" do
       it { should have_db_column(:first_name).of_type(:string).with_options(null: false) }
@@ -49,5 +55,12 @@ RSpec.describe User, type: :model do
       it { should validate_presence_of(:email) }
       it { should validate_presence_of(:password) }
     end
+
+    describe "associations" do
+      it { expect(user).to have_many(:accounts) }
+      it { expect(user).to have_many(:memberships) }
+    end
+
+    
   end
 end

@@ -17,6 +17,10 @@ require 'securerandom'
 class Account < ApplicationRecord
   before_validation :create_unique_slug, on: :create
 
+  validates :organization_name, presence: true
+  has_many :memberships
+  has_many :users, through: :memberships
+
   private
 
   def create_unique_slug
