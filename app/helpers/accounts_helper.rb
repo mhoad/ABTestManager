@@ -3,5 +3,6 @@ module AccountsHelper
     Role::VALID_ACCOUNT_ROLES.each do |role|
       return role if user.has_role? role, account
     end
+    return nil
   end
 end

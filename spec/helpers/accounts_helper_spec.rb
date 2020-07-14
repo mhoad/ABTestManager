@@ -11,5 +11,14 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe AccountsHelper, type: :helper do
-  
+  let(:user) { create(:user) }
+  let(:account) { create(:account) }
+
+  before do
+    AddUserRoleToAccount.call(user: user, account: account, role: :admin)
+  end
+
+  it "returns the correct role name" do
+    expect(helper.user_account_role(user: user, account: account)).to eq :admin
+  end
 end

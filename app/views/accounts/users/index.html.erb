@@ -1,8 +1,25 @@
-<% current_account.users.each do |user| %>
-  <%= user.first_name%>
-  <%= user.last_name%><br>
-  <%= user.job_title %>
-  <%= user.organization %><br>
+<div class="screen-title">
+  <h1 class="screen-title__heading">Team</h1>
+  <a class="button button--primary button--large">
+    Add User
+  </a>
+</div>
 
-  <%= user_account_role.capitalize %>
-<% end %>
+
+<section class="team">
+  <table class="data-table team__data">
+    <thead class="data-table__header">
+      <tr class="data-table__row">
+        <th class="data-table__heading">Name</th>
+        <th class="data-table__heading">Title</th>
+        <th class="data-table__heading">Role</th>
+        <th class="data-table__heading"></th>
+      </tr>
+    </thead>
+    <tbody class="data-table__body">
+      <% current_account.users.each do |user| %>
+        <%= render "accounts/users/user_row", user: user %>
+      <% end %>
+    </tbody>
+  </table>
+</section>

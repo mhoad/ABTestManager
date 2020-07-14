@@ -1,3 +1,5 @@
 <%= current_account.organization_name %>
 
-<%= link_to "Homepage", url_for(controller: 'marketing_pages', action: 'homepage', script_name: "/") %>
+<%= link_to "Homepage", root_path(script_name: "/")%>
+
+<%= link_to "Team", account_team_path %>
