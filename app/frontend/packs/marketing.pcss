@@ -1,0 +1,47 @@
+body {
+  display: block;
+}
+header {
+  width: 100%;
+}
+
+.top_nav {
+  background-color: white;
+  padding: var(--spacing-6) var(--spacing-6);
+  display: flex;
+  justify-content: space-between;
+  box-shadow: var(--shadow-sm);
+
+}
+
+.button {
+  border-radius: var(--rounded-md);
+  text-decoration: none;
+
+  &--primary {
+    background-color: var(--purple-700);
+    color: white;
+  }
+
+  &--secondary {
+    background-color: var(--green-600);
+    color: white;
+  }
+
+  &--large {
+    padding: var(--spacing-3) var(--spacing-4);
+    margin: var(--spacing-2);
+  }
+}
+
+.hero {
+  text-align: center;
+  &__headline {
+    font-size: var(--text-6xl);
+  }
+
+  &__tagline {
+    font-size: var(--text-3xl);
+    font-weight: 300;
+  }
+}

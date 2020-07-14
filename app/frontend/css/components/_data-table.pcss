@@ -1,0 +1,37 @@
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--grey-200);
+  box-shadow: var(--shadow-sm);
+
+  &__header {
+    background-color: var(--grey-200);
+  }
+
+  &__heading {
+    text-transform: uppercase;
+    text-align: left;
+    padding: var(--spacing-3) var(--spacing-6);
+    color: var(--grey-700);
+    letter-spacing: var(--tracking-wider);
+    font-size: var(--text-xs);
+    font-weight: 500;
+    border-bottom: 1px solid var(--grey-300);
+  }
+
+  &__body {
+    background-color: white;
+    font-size: var(--text-sm);
+  }
+
+  &__row:hover {
+    background-color: var(--grey-100);
+  }
+
+  &__data {
+    
+    border-bottom: 1px solid var(--grey-300);
+    white-space: nowrap;
+    padding: var(--spacing-4) var(--spacing-6);
+  }
+}

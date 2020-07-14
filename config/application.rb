@@ -37,6 +37,6 @@ module TestManager
     config.generators.assets = nil
 
     config.middleware.use AccountSlug::Extractor
-    # config.middleware.use AccountSlug::LimitSessionToAccountSlugPath
+    config.middleware.use AccountSlug::LimitSessionToAccountSlugPath
   end
 end

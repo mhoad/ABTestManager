@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'marketing_pages#homepage'
 
   devise_scope :user do
-    get "/sign_in" => "users/sessions#new"
+    get "/sign_in" => "users/sessions#new", as: "sign_in"
     get "/sign_up" => "users/registrations#new", as: "new_user_registration"
   end
 

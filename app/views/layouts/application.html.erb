@@ -4,14 +4,24 @@
     <title>TestManager</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= stylesheet_pack_tag 'shared', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'shared', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <%= render "layouts/drawer" %>
+    <div class="app-content">
+      <%= render "layouts/top_app_bar" %>
+      <main class="main-content">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+        <div class="top-app-bar--fixed-adjust"> 
+          <%= yield %>
+        </div>
+      </main>
+    </div>
   </body>
 </html>

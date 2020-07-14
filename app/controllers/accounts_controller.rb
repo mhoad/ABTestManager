@@ -1,6 +1,7 @@
 class AccountsController < ApplicationController
   before_action :authenticate_user!
-  skip_before_action :current_account, only: [:new, :create]
+
+  # skip_before_action :current_account, only: [:new, :create]
 
   def new
     @account = Account.new

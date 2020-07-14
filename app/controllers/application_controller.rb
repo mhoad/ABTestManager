@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
-  before_action :current_account
+  # before_action :current_account
 
-  private
+  # private
 
   def current_account
     @current_account ||= Account.find_by!(slug: request.env['testmanager.account.slug'])

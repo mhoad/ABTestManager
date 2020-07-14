@@ -1,0 +1,112 @@
+.top-app-bar {
+  background-color: white;
+  width: 100%;
+  box-shadow: var(--shadow);
+
+  &__row {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 var(--spacing-8);
+    display: flex;
+    height: var(--spacing-16);
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__section {
+    display: flex;
+    align-items: center;
+
+    &--align-start {
+
+    }
+
+    &--align-end {
+
+    }
+  }
+
+  &__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-2);
+    color: var(--grey-600);
+    border-radius: var(--rounded-md);
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+
+    &:hover {
+      background-color: var(--grey-200);
+    }
+  }
+
+  &__navigation-icon {
+    height: 2rem;
+  }
+
+  &__title {
+    font-size: var(--text-xl);
+    font-weight: 500;
+    margin-left: var(--spacing-2);
+  }
+
+  &--fixed-adjust {
+    margin-top: var(--spacing-16);
+  }
+
+  &__dropdown-container {
+    position: relative;
+
+    &:hover .top-app-bar__dropdown-menu {
+      display: block
+    }
+  }
+
+  &__dropdown-menu {
+    min-width: var(--spacing-48);
+    position: absolute;
+    box-shadow: var(--shadow-lg);
+    right: 0;
+    border-radius: var(--rounded-md);
+    transform-origin: top right;
+    background-color: white;
+    border: 1px solid var(--grey-200);
+    overflow: hidden;
+    
+    
+    display: none;
+  }
+
+  &__dropdown-link-container {
+    line-height: 1.25rem;
+    display: flex;
+    color: var(--grey-500);
+    width: 100%;
+    padding: var(--spacing-2) var(--spacing-4);
+    text-decoration: none;
+
+    &:hover {
+      background: var(--grey-100);
+    }
+  }
+
+  &__dropdown-link {
+    color: var(--grey-700);
+    font-size: var(--text-sm);
+  }
+
+  &__dropdown-icon {
+    align-self: center;
+    color: var(--grey-500);
+    height: 1.2rem;
+    margin-right: var(--spacing-2);
+  }
+}
+
+@media (--medium-viewport) {
+  button[data-button="hamburger"] {
+    display: none;
+  }
+}

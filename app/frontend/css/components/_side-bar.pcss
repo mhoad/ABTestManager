@@ -1,0 +1,23 @@
+.side-bar {
+  display: none;
+}
+
+@media (--medium-viewport) {
+  .side-bar {
+    height: 100vh;
+    display: flex;
+    flex-shrink: 0;
+    flex-direction: column;
+    width: var(--spacing-64);
+    background-color: var(--grey-800);
+    padding-top: var(--spacing-5);
+
+    &__logo {
+      height: 2rem;
+      width: auto;
+      align-self: flex-start;
+      padding: var(--spacing-1) var(--spacing-3);
+    }
+  }
+
+}
