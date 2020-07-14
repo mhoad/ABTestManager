@@ -1,0 +1,23 @@
+<tr class="data-table__row">
+  <td class="data-table__data">
+    <div class="team__user-info">
+      <div class="team__avatar-container">
+        <!-- image_pack_tag 'users/user-face-1.jpg', class: "top-nav__avatar" -->
+      </div>
+      <div class="team__personal-info">
+        <div class="team__user-name"><%= account.organization_name %></div>
+      </div>
+    </div>
+  </td>
+  <td class="data-table__data">
+    <div class="team__job-title"><%= account.users.count %></div>
+  </td>
+  <td class="data-table__data">
+    <div class="pill pill--success"><%= user_account_role(user: current_user, account: account).to_s.capitalize %></div>
+  </td>
+  <td class="data-table__data">
+    <div class="team__actions">
+      <%= link_to "View", account_dashboard_path(script_name: "/#{AccountSlug::encode(account.slug)}"), class: "team__action-link" %>
+    </div>
+  </td>
+</tr>
