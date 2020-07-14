@@ -11,7 +11,9 @@ RSpec.describe "Viewing account team members", type: :system do
     AddUserToAccount.call(user: user_two, account: account, role: :regular)
     sign_in user_one
     visit account_dashboard_path(script_name: "/#{AccountSlug::encode(account.slug)}")
-    click_link "Team"
+    within ".list" do
+      click_link "Team"
+    end
   end
 
   scenario "shows correct team members" do
