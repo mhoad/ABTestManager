@@ -21,6 +21,8 @@ class Account < ApplicationRecord
   has_many :memberships
   has_many :users, through: :memberships
 
+  resourcify # Allow granting user roles based on the account
+
   private
 
   def create_unique_slug
