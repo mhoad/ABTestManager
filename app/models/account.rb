@@ -24,6 +24,6 @@ class Account < ApplicationRecord
   private
 
   def create_unique_slug
-    self.slug = '%07d' % SecureRandom.rand(10 ** 7)
+    self.slug = '%07d' % SecureRandom.rand(10 ** 7) if self.slug.nil?
   end
 end
