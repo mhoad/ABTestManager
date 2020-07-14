@@ -1,5 +1,5 @@
 class CustomerSignup
   include Interactor::Organizer
 
-  organize CreateAccount, AddUserToAccount
+  organize CreateAccount, AddUserToAccount, AddUserRoleToAccount
 end

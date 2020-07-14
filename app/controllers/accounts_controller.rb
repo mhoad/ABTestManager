@@ -7,7 +7,7 @@ class AccountsController < ApplicationController
   end
 
   def create
-    result = CustomerSignup.call(account_params: account_params, user: current_user)
+    result = CustomerSignup.call(account_params: account_params, user: current_user, role: :admin)
     if result.success?
       redirect_to account_dashboard_path(script_name: safe_account_script(result.account.slug))
     else

@@ -17,5 +17,20 @@
 require 'rails_helper'
 
 RSpec.describe Role, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context "database" do
+    describe "columns" do
+      it { should have_db_column(:id).of_type(:integer).with_options(null: false) }
+      it { should have_db_column(:name).of_type(:string) }
+      it { should have_db_column(:resource_type).of_type(:string) }
+      it { should have_db_column(:resource_id).of_type(:integer) }
+      it { should have_db_column(:created_at).of_type(:datetime).with_options(null: false) }
+      it { should have_db_column(:updated_at).of_type(:datetime).with_options(null: false) }
+    end
+
+    describe "indexes" do
+      # FIXME
+      # it { should have_db_index(:name_and_resource_type_and_resource_id) }
+      # it { should have_db_index(:resource_type_and_resource_id) }
+    end
+  end
 end

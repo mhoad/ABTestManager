@@ -24,4 +24,6 @@ class Role < ApplicationRecord
             allow_nil: true
 
   scopify
+
+  VALID_ACCOUNT_ROLES = [:admin, :regular].freeze
 end

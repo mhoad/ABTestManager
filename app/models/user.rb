@@ -21,7 +21,6 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 class User < ApplicationRecord
-  rolify
   validates :first_name, :last_name, :job_title, :organization, presence: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -30,4 +29,6 @@ class User < ApplicationRecord
 
   has_many :memberships
   has_many :accounts, through: :memberships
+
+  rolify strict: true
 end
