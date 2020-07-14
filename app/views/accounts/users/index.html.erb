@@ -1,0 +1,8 @@
+<% current_account.users.each do |user| %>
+  <%= user.first_name%>
+  <%= user.last_name%><br>
+  <%= user.job_title %>
+  <%= user.organization %><br>
+
+  <%= user_account_role.capitalize %>
+<% end %>

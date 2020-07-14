@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
   get "/dashboard" => "dashboard#index", as: "account_dashboard"
+  get "/team" => "accounts/users#index", as: "account_team"
 
   resources :accounts
 end
