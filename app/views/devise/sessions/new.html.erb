@@ -1,26 +1,43 @@
-<h2>Log in</h2>
+<div class="split-page">
+  <section class="split-page__form">
+  <div class="form-container">
+    <%= image_pack_tag "workflow-logo-on-white.svg", class: "form-logo" %>
+    <h1>Sign in to your account </h1>
+    <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+      <%= link_to "Or sign up for your free trial", new_registration_path(resource_name), class: "sign-in-cta" %>
+    <% end %>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field">
+        <%= f.label :email, class: "form-label" %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-text" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password, class: "form-label" %><br />
+        <%= f.password_field :password, autocomplete: "current-password", class: "form-text" %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me, class: "form-label" %>
+        </div>
+      <% end %>
+
+      <div class="actions">
+        <%= f.submit "Log in", class: "button button--primary button--large form-btn" %>
+      </div>
+    <% end %>
+
+    <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+      <%= link_to "Forgot your password?", new_password_path(resource_name), class: "sign-in-cta" %><br />
+    <% end %>
   </div>
+  </section>
+  <aside class="split-page__graphic">
+    <%= image_pack_tag "undraw_stock_prices_afrt.svg", class: "split-page__image"%>
+  </aside>
+</div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>

@@ -1,0 +1,81 @@
+.split-page {
+  display: flex;
+  max-height: 100vh;
+
+  &__form {
+    /* flex-grow: 1; */
+    min-width: 40rem;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-color: var(--grey-100);
+  }
+
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__graphic {
+    flex-grow: 1;
+    background-color: var(--grey-500);
+    padding: var(--spacing-12);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    font-size: var(--text-sm);
+    background: linear-gradient(135deg, rgba(2,0,36,1) 0%, rgba(160,174,192,1) 0%, rgba(76,81,191,1) 100%); 
+  }
+
+  &__image {
+    object-fit: contain;
+    max-width: 100%;
+  }
+
+}
+
+.form-logo {
+  height: var(--spacing-12);
+  align-self: baseline;
+}
+
+.form-text {
+  padding: var(--spacing-3) var(--spacing-4);
+  border-radius: var(--rounded-md);
+  border: 1px solid var(--grey-300);
+  margin: var(--spacing-3) 0;
+  width: 100%;
+  border: 1px solid var(--grey-400);
+}
+
+.input:-webkit-autofill {transition: background-color 5000s ease-in-out 0s;}
+input {
+  filter: none;
+}
+:-moz-autofill, :-moz-autofill-preview {
+  filter: grayscale(21%) brightness(88%) contrast(161%) invert(10%) sepia(40%) saturate(206%);
+}
+
+.form-label {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--grey-600);
+}
+
+.form-btn {
+  width: 100%;
+  margin-left: var(--spacing-2) 0 !important;
+}
+
+.sign-in-cta {
+  text-decoration: none;
+  font-size: var(--text-sm);
+  margin-bottom: 2.5rem;
+  color: var(--indigo-600);
+}
+
+input:-webkit-autofill {
+    /* -webkit-text-fill-color: blue !important; */
+}
