@@ -1,25 +1,32 @@
 <header>
   <nav class="top_nav">
-    <div class="top_nav__left"></div>
+    <div class="top_nav__left">
+      <%= image_pack_tag "workflow-logo-on-white.svg", class: "form-logo" %>
+      <%= link_to "Features", "#", class: "top_nav__link" %>
+      <%= link_to "Resources", "#", class: "top_nav__link" %>
+      <%= link_to "Pricing", "#", class: "top_nav__link" %>
+      <%= link_to "Contact", "#", class: "top_nav__link" %>
+    </div>
     <div class="top_nav__right">
-      
-      
       <% if user_signed_in? %>
-      <%= link_to "Logout", destroy_user_session_path, class: "button button--secondary button--large", method: :delete %>
+      <%= link_to "Logout", destroy_user_session_path, class: "button button--primary button--large", method: :delete %>
       <% else %>
-        <%= link_to "Sign up", new_user_registration_path, class: "button button--secondary button--large" %>
-        <%= link_to "Login", sign_in_path, class: "button button--primary button--large" %>
+        <%= link_to "Login", sign_in_path, class: "top_nav__link" %>
+        <%= link_to "Sign up", new_user_registration_path, class: "button button--primary button--large" %>
       <% end %>  
     </div> 
   </nav>
 </header>
 
-<main>
-  <section class="hero">
+<header class="hero">
+  <div class="hero__content">
     <h1 class="hero__headline">Test Manager</h1>
     <h2 class="hero__tagline">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro numquam.
     </h2>
-  </section>
+  </div>
+  <%= image_pack_tag "website-components-hero.svg", class: "hero__image"%>
+</header>
+<main> 
   
 </main>
