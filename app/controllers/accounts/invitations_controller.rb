@@ -38,8 +38,6 @@ module Accounts
 
     def invitation_params
       params[:accounts_invitation].permit(:email, :role)
-
-      # params.require(:person).permit(:email, :role, user_attributes: [:email, :password, :password_confirmation, :job_title, :organization])
     end
 
     def user_params

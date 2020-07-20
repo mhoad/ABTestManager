@@ -15,7 +15,7 @@
     <div class="team__company"><%= user.organization %></div>
   </td>
   <td class="data-table__data">
-    <div class="pill pill--success"><%= user_account_role.to_s.capitalize %></div>
+    <div class="pill pill--success"><%= user_account_role(user: user).to_s.capitalize %></div>
   </td>
   <td class="data-table__data">
     <div class="team__actions">
