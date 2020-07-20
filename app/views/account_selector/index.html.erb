@@ -1,17 +1,22 @@
-<section class="team">
-  <table class="data-table team__data">
-    <thead class="data-table__header">
-      <tr class="data-table__row">
-        <th class="data-table__heading">Account Name</th>
-        <th class="data-table__heading">Users</th>
-        <th class="data-table__heading">Role</th>
-        <th class="data-table__heading"></th>
-      </tr>
-    </thead>
-    <tbody class="data-table__body">
-      <% current_user.accounts.each do |account| %>
-        <%= render "account_selector/account_row", account: account %>
-      <% end %>
-    </tbody>
-  </table>
-</section>
+<div class="account-selector">
+  <section class="screen-title">
+    <h1 class="screen-title__header">Select Account</h1>
+  </section>
+  <section class="team">
+    <table class="data-table team__data">
+      <thead class="data-table__header">
+        <tr class="data-table__row">
+          <th class="data-table__heading">Account Name</th>
+          <th class="data-table__heading">Users</th>
+          <th class="data-table__heading">Role</th>
+          <th class="data-table__heading"></th>
+        </tr>
+      </thead>
+      <tbody class="data-table__body">
+        <% current_user.accounts.each do |account| %>
+          <%= render "account_selector/account_row", account: account %>
+        <% end %>
+      </tbody>
+    </table>
+  </section>
+</div>
