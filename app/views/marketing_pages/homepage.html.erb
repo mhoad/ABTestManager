@@ -9,6 +9,7 @@
     </div>
     <div class="top_nav__right">
       <% if user_signed_in? %>
+      <%= link_to "View Accounts", account_selector_path, class: "top_nav__link" %>
       <%= link_to "Logout", destroy_user_session_path, class: "button button--primary button--large", method: :delete %>
       <% else %>
         <%= link_to "Login", sign_in_path, class: "top_nav__link" %>
