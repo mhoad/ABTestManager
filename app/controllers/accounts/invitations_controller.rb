@@ -7,6 +7,7 @@ module Accounts
     def create
       @invitation = current_account.invitations.new(invitation_params)
       if @invitation.save
+        AccountInvitationMailer.invite(@invitation).deliver_later
         redirect_to account_team_path, notice: "#{@invitation.email} was successfully invited."
       else
         render :new

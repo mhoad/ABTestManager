@@ -23,6 +23,10 @@ RSpec.describe "Inviting users", type: :system do
   
       expect(page).to have_content "test@example.com was successfully invited."
       expect(current_path).to eq account_prefix(account_team_path)
+
+      email = find_email("test@example.com")
+      expect(email).to be_present
+      expect(email.subject).to eq "Invitation to join #{account.organization_name} on Test Manager"
     end
   end
 
