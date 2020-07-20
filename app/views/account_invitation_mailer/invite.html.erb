@@ -1,1 +1,8 @@
-Placeholder Content
+<p>
+You have been invited to join the <%= @invitation.account.organization_name %> 
+account on Test Manager.
+</p>
+
+<p>
+<%= link_to "Accept Invitation", accept_invitation_url(@invitation) %>
+</p>

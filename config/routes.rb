@@ -16,7 +16,12 @@ Rails.application.routes.draw do
   get "/dashboard" => "dashboard#index", as: "account_dashboard"
   get "/team" => "accounts/users#index", as: "account_team"
   
-  resources :invitations, only: [:new, :create], controller: 'accounts/invitations'
+  resources :invitations, only: [:new, :create], controller: 'accounts/invitations' do
+    member do
+      get :accept
+      patch :accepted
+    end
+  end
   # scope :accounts do
     
   # end
