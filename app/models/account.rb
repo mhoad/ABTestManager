@@ -20,6 +20,7 @@ class Account < ApplicationRecord
   validates :organization_name, presence: true
   has_many :memberships
   has_many :users, through: :memberships
+  has_many :invitations, class_name: "Accounts::Invitation"
 
   resourcify # Allow granting user roles based on the account
 

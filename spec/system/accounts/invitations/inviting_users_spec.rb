@@ -21,7 +21,7 @@ RSpec.describe "Inviting users", type: :system do
       fill_in "Email", with: "test@example.com"
       click_button "Invite User"
   
-      expect(page).to have_content "test@example.com has been invited."
+      expect(page).to have_content "test@example.com was successfully invited."
       expect(current_path).to eq account_prefix(account_team_path)
     end
   end

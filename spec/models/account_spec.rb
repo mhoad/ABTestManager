@@ -40,6 +40,7 @@ RSpec.describe Account, type: :model do
     describe "associations" do
       it { expect(account).to have_many(:users) }
       it { expect(account).to have_many(:memberships) }
+      it { expect(account).to have_many(:invitations) }
     end
 
     describe "callbacks" do

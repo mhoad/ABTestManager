@@ -1,0 +1,11 @@
+<div class="screen-title">
+  <h1 class="screen-title__heading">Invite a New User to Your Account</h1>
+</div>
+
+<%= form_with model: @invitation, class: "invitation_form", url: invitations_path do |f| %>
+  <%= f.label :email, class: "form-label" %><br />
+  <%= f.email_field :email, class: "form-text" %>
+  <%= f.label :role, class: "form-label" %><br />
+  <%= f.select(:role, options_for_select(Role::VALID_ACCOUNT_ROLES.map(&:capitalize))) %><br>
+  <%= f.submit "Invite User", class: "button button--primary button--large" %>
+<% end %>

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     get "/sign_up" => "users/registrations#new", as: "new_user_registration"
   end
 
-  devise_for :users, controllers: { registrations: 'users/registrations' }
+  devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }
 
   get '/account/selector' => "account_selector#index", as: :user_root 
 
@@ -15,6 +15,11 @@ Rails.application.routes.draw do
 
   get "/dashboard" => "dashboard#index", as: "account_dashboard"
   get "/team" => "accounts/users#index", as: "account_team"
+  
+  resources :invitations, only: [:new, :create], controller: 'accounts/invitations'
+  # scope :accounts do
+    
+  # end
 
-  resources :accounts
+  resources :accounts, only: [:new, :create]
 end
