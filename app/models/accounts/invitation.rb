@@ -30,11 +30,17 @@ module Accounts
     validates :role, inclusion: { in: Role::VALID_ACCOUNT_ROLES.map(&:to_s),
     message: "%{value} is not a valid account role" }
 
+    def to_param
+      token
+    end
+    
     private
 
     def symbolize_role
       self.role = self.role.downcase.to_sym unless self.role.blank?
     end
+
+    
 
   end
 end

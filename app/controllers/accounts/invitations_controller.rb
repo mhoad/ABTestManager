@@ -20,12 +20,11 @@ module Accounts
     end
 
     def accept
-      @invitation = Accounts::Invitation.find(params[:id])
+      @invitation = Accounts::Invitation.find_by!(token: params[:id])
     end
 
     def accepted
-      # byebug
-      @invitation = Accounts::Invitation.find(params[:id])
+      @invitation = Accounts::Invitation.find_by!(token: params[:id])
       user = User.create!(user_params)
       @invitation.account.users << user
       AddUserRoleToAccount.call(user: user, account: @invitation.account, role: @invitation.role.to_sym)

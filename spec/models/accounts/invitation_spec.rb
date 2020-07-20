@@ -54,4 +54,13 @@ RSpec.describe Accounts::Invitation, type: :model do
       it { should belong_to(:account) }
     end
   end
+
+  context "behaviour" do
+    describe "secure token" do
+      it "generates correctly" do
+        invitation.save
+        expect(invitation.token).to be_present
+      end
+    end
+  end
 end

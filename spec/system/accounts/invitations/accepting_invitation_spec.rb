@@ -15,7 +15,7 @@ RSpec.describe "Accepting an account invitation", type: :system do
       
       expect(accept_link).to be_present
       visit accept_link
-      # byebug
+      
       fill_in "First name", with: "Old"
       fill_in "Last name", with: "Mate"
       fill_in "Password", with: "password"
