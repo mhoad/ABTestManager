@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   get "/account/selector" => "account_selector#index", :as => "account_selector"
 
-  get "/dashboard" => "dashboard#index", :as => "account_dashboard"
+  get "/dashboard" => "accounts/dashboard#index", :as => "account_dashboard"
   get "/team" => "accounts/users#index", :as => "account_team"
 
   resources :invitations, only: [:new, :create], controller: "accounts/invitations" do
