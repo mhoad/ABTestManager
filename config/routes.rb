@@ -9,9 +9,8 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: {registrations: "users/registrations", sessions: "users/sessions"}
 
-  get "/account/selector" => "account_selector#index", :as => :user_root
-
-  get "/account/selector" => "account_selector#index", :as => "account_selector"
+  get "/account/selector" => "accounts/selector#index", :as => :user_root
+  get "/account/selector" => "accounts/selector#index", :as => "account_selector"
 
   get "/dashboard" => "accounts/dashboard#index", :as => "account_dashboard"
   get "/team" => "accounts/users#index", :as => "account_team"
