@@ -14,7 +14,7 @@
       </thead>
       <tbody class="data-table__body">
         <% current_user.accounts.each do |account| %>
-          <%= render "account_selector/account_row", account: account %>
+          <%= render "accounts/selector/account_row", account: account %>
         <% end %>
       </tbody>
     </table>
