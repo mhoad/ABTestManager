@@ -27,7 +27,6 @@ RSpec.describe "Accepting an account invitation", type: :system do
 
       expect(page).to have_content "You have joined the #{account.organization_name} account."
       expect(current_path).to eq account_prefix(account_dashboard_path)
-      # expect(current_path).to eq account_scoped_path(account: account, path: account_dashboard_path)
       
       click_link "Team"
       expect(page).to have_content "Old Mate"
@@ -35,14 +34,17 @@ RSpec.describe "Accepting an account invitation", type: :system do
   end
 
   context "as an existing user" do
-    let(:existing_user) { FactoryBot.create(:user) }
+    let!(:existing_user) { FactoryBot.create(:user) }
 
-    scenario "accepts an invitation after signing in" do
+    before do
       email = open_email("test@example.com")
       accept_link = links_in_email(email).first
       expect(accept_link).to be_present
 
       visit accept_link
+    end
+
+    scenario "accepts an invitation after signing in" do
       click_link "Sign in as an existing user"
 
       fill_in "Email", with: existing_user.email
@@ -52,12 +54,27 @@ RSpec.describe "Accepting an account invitation", type: :system do
       expect(current_path).to eq accept_invitation_path(invitation)
       expect(page).to_not have_content("Sign in as an existing user")
       click_button "Accept Invitation"
-
+      
       expect(page).to have_content "You have joined the #{account.organization_name} account."
       expect(current_path).to eq account_prefix(account_dashboard_path)
       
       click_link "Team"
       expect(page).to have_content existing_user.email
+    end
+
+    scenario "attempts to create a new account using existing email" do
+      fill_in "First name", with: existing_user.first_name
+      fill_in "Last name", with: existing_user.last_name
+      fill_in "Email", with: existing_user.email
+      fill_in "Password", with: existing_user.password
+      fill_in "Password confirmation", with: existing_user.password
+      fill_in "Job title", with: existing_user.job_title
+      fill_in "Organization", with: existing_user.organization
+
+      click_button "Accept Invitation"
+      
+      expect(page).to have_content "Sign in with an existing account if you have one."
+      expect(current_path).to eq accept_invitation_path(invitation)
     end
   end
 

@@ -4,6 +4,7 @@ module Accounts
     skip_before_action :ensure_valid_account!, only: [:accept, :accepted]
 
     before_action :find_invitation, only: [:accept, :accepted]
+    before_action :find_or_create_user, only: [:accepted]
 
     layout "marketing", only: [:accept]
 
@@ -25,23 +26,28 @@ module Accounts
     end
 
     def accepted
-      result = AcceptInvitation.call(user: find_or_create_user, account: @invitation.account, role: @invitation.role)
+      result = AcceptInvitation.call(user: @user, account: @invitation.account, role: @invitation.role)
       
       if result.success?
         sign_in(result.user)
-        flash[:notice] = "You have joined the #{result.account.organization_name} account."
 
+        flash[:notice] = "You have joined the #{result.account.organization_name} account."
         redirect_to account_scoped_path(account: result.account, path: account_dashboard_path)
       else
-        render :accept
+        flash[:alert] = "Sign in with an existing account if you have one."
+        redirect_to accept_invitation_path(@invitation)
       end
     end
 
     private
 
     def find_or_create_user
-      return current_user if user_signed_in?
-      user = User.create!(user_params)
+      if user_signed_in?
+        @user = current_user
+      else
+        result = CreateUser.call(user_params: user_params)
+        @user = result.user if result.success?
+      end
     end
 
     def find_invitation

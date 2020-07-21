@@ -16,7 +16,7 @@ class InviteUserToAccount
   private
 
   def ensure_valid_params!
-    context.fail!(message: "Invalid invitation parameters.") unless context.invite_params.is_a?(ActionController::Parameters)
+    context.fail!(message: "Invalid invitation parameters.") unless context.invite_params.respond_to?(:to_h)
     context.fail!(message: "Please select a valid account.") unless context.account.is_a?(Account)
   end
 end
