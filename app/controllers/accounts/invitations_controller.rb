@@ -3,6 +3,8 @@ module Accounts
     skip_before_action :authenticate_user!, only: [:accept, :accepted]
     skip_before_action :ensure_valid_account!, only: [:accept, :accepted]
 
+    before_action :find_invitation, only: [:accept, :accepted]
+
     layout "marketing", only: [:accept]
 
     def new
@@ -20,26 +22,30 @@ module Accounts
 
     def accept
       store_location_for(:user, request.fullpath)
-      @invitation = Accounts::Invitation.find_by!(token: params[:id])
     end
 
     def accepted
-      @invitation = Accounts::Invitation.find_by!(token: params[:id])
+      result = AcceptInvitation.call(user: find_or_create_user, account: @invitation.account, role: @invitation.role)
       
-      if user_signed_in?
-        user = current_user
+      if result.success?
+        sign_in(result.user)
+        flash[:notice] = "You have joined the #{result.account.organization_name} account."
+        redirect_to account_dashboard_path(script_name: "/#{AccountSlug::encode(result.account.slug)}")
       else
-        user = User.create!(user_params)
+        render :accept
       end
-
-      @invitation.account.users << user
-      AddUserRoleToAccount.call(user: user, account: @invitation.account, role: @invitation.role.to_sym)
-      sign_in(user)
-      flash[:notice] = "You have joined the #{@invitation.account.organization_name} account."
-      redirect_to account_dashboard_path(script_name: "/#{AccountSlug::encode(@invitation.account.slug)}")
     end
 
     private
+
+    def find_or_create_user
+      return current_user if user_signed_in?
+      user = User.create!(user_params)
+    end
+
+    def find_invitation
+      @invitation = Accounts::Invitation.find_by!(token: params[:id])
+    end
 
     def invitation_params
       params[:accounts_invitation].permit(:email, :role)
