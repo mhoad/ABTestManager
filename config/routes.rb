@@ -22,9 +22,6 @@ Rails.application.routes.draw do
       patch :accepted
     end
   end
-  # scope :accounts do
 
-  # end
-
-  resources :accounts, only: [:new, :create]
+  resources :accounts_registration, only: [:new, :create], controller: "accounts/registrations"
 end

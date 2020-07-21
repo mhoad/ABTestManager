@@ -17,7 +17,7 @@ RSpec.describe "Create an account", type: :system do
     fill_in "Password confirmation", with: "test-password"
     click_button "Sign up"
 
-    expect(current_path).to eq new_account_path
+    expect(current_path).to eq new_accounts_registration_path
     expect(page).to have_content("Welcome! You have signed up successfully.")
 
     click_button "Create"
