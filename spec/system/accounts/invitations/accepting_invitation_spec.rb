@@ -8,8 +8,8 @@ RSpec.describe "Accepting an account invitation", type: :system do
     AccountInvitationMailer.invite(invitation).deliver_now
   end
 
-  context "with a valid invite" do
-    scenario "accepts an invitation" do
+  context "as a new user" do
+    scenario "accepts an invitation successfully" do
       email = open_email("test@example.com")
       accept_link = links_in_email(email).first
       
@@ -30,6 +30,33 @@ RSpec.describe "Accepting an account invitation", type: :system do
       
       click_link "Team"
       expect(page).to have_content "Old Mate"
+    end
+  end
+
+  context "as an existing user" do
+    let(:existing_user) { FactoryBot.create(:user) }
+
+    scenario "accepts an invitation after signing in" do
+      email = open_email("test@example.com")
+      accept_link = links_in_email(email).first
+      expect(accept_link).to be_present
+
+      visit accept_link
+      click_link "Sign in as an existing user"
+
+      fill_in "Email", with: existing_user.email
+      fill_in "Password", with: existing_user.password
+      click_button "Log in"
+
+      expect(current_path).to eq accept_invitation_path(invitation)
+      expect(page).to_not have_content("Sign in as an existing user")
+      click_button "Accept Invitation"
+
+      expect(page).to have_content "You have joined the #{account.organization_name} account."
+      expect(current_path).to eq account_prefix(account_dashboard_path)
+      
+      click_link "Team"
+      expect(page).to have_content existing_user.email
     end
   end
 

@@ -1,0 +1,50 @@
+<%= link_to "Sign in as an existing user", sign_in_path, class: "sign-in-cta" %>
+
+<%= form_with model: @invitation, class: "invitation_form", url: accepted_invitation_path do |f| %>
+
+  <div class="row">
+    <div class="field">
+      <%= f.label :first_name, class: "form-label" %><br />
+      <%= f.text_field :first_name, autofocus: true, autocomplete: "fname", class: "form-text" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :last_name, class: "form-label" %><br />
+      <%= f.text_field :last_name, autocomplete: "lname", class: "form-text" %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :email, class: "form-label" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-text" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password, class: "form-label" %>
+    <% if @minimum_password_length %>
+    <em class="label-helper">(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password", class: "form-text" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation, class: "form-label" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-text" %>
+  </div>
+
+  <div class="row">
+    <div class="field"> 
+      <%= f.label :job_title, class: "form-label" %><br />
+      <%= f.text_field :job_title, class: "form-text" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :organization, class: "form-label" %><br />
+      <%= f.text_field :organization, class: "form-text" %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Accept Invitation", class: "button button--primary button--large form-btn" %>
+  </div>
+<% end %>

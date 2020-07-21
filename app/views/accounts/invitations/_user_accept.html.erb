@@ -1,0 +1,5 @@
+<%= form_with model: @invitation, class: "invitation_form", url: accepted_invitation_path do |f| %>
+  <div class="actions">
+    <%= f.submit "Accept Invitation", class: "button button--primary button--large form-btn" %>
+  </div>
+<% end %>

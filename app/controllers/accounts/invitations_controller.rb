@@ -20,12 +20,19 @@ module Accounts
     end
 
     def accept
+      store_location_for(:user, request.fullpath)
       @invitation = Accounts::Invitation.find_by!(token: params[:id])
     end
 
     def accepted
       @invitation = Accounts::Invitation.find_by!(token: params[:id])
-      user = User.create!(user_params)
+      
+      if user_signed_in?
+        user = current_user
+      else
+        user = User.create!(user_params)
+      end
+
       @invitation.account.users << user
       AddUserRoleToAccount.call(user: user, account: @invitation.account, role: @invitation.role.to_sym)
       sign_in(user)
