@@ -52,9 +52,39 @@ AddUserRoleToAccount.call(user: user_one, account: account_two, role: :regular )
 AddUserRoleToAccount.call(user: user_three, account: account_two, role: :admin )
 
 
-Accounts::Issue.create(title: "Product pages have multiple UX issues", priority: :high, account: account_one)
-Accounts::Issue.create(title: "Add to cart button has low contrast", priority: :medium, account: account_one)
-Accounts::Issue.create(title: "Icons don't show in internet explorer", priority: :medium, account: account_one)
+Accounts::Issue.create(
+  title: "Product pages have multiple UX issues", 
+  priority: :high, 
+  status: :cancelled,
+  user: user_one,
+  account: account_one
+)
+Accounts::Issue.create(
+  title: "Add to cart button has low contrast", 
+  priority: :medium,
+  status: :in_progress,
+  user: user_two,
+  account: account_one
+)
+Accounts::Issue.create(
+  title: "Icons don't show in internet explorer", 
+  priority: :medium,
+  status: :in_progress,
+  user: user_one,
+  account: account_one
+)
 
-Accounts::Issue.create(title: "JavaScript errors on the homepage", priority: :high, account: account_two)
-Accounts::Issue.create(title: "Contact form is broken on mobile", priority: :low, account: account_two)
+Accounts::Issue.create(
+  title: "JavaScript errors on the homepage", 
+  priority: :high,
+  status: :done,
+  user: user_three,
+  account: account_two
+)
+Accounts::Issue.create(
+  title: "Contact form is broken on mobile", 
+  priority: :low, 
+  account: account_two,
+  user: user_three,
+  status: :in_progress,
+)

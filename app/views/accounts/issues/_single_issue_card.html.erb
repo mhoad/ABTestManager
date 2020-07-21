@@ -1,7 +1,7 @@
-<%= link_to "#", class: "issue-card" do %>
+<%= link_to issue_path(issue), class: "issue-card" do %>
   <div class="issue-card__align-top">
     <div class="issue-card__align-start">
-      <%= raw(status_icon(:in_progress)) %>
+      <%= raw(status_icon(issue.status)) %>
       <div class="issue-card__title">
         <%= issue.title %>
       </div>

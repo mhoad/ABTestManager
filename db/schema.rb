@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_21_145152) do
+ActiveRecord::Schema.define(version: 2020_07_21_184949) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -41,7 +41,10 @@ ActiveRecord::Schema.define(version: 2020_07_21_145152) do
     t.uuid "account_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "status"
+    t.uuid "user_id", null: false
     t.index ["account_id"], name: "index_accounts_issues_on_account_id"
+    t.index ["user_id"], name: "index_accounts_issues_on_user_id"
   end
 
   create_table "memberships", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -89,6 +92,7 @@ ActiveRecord::Schema.define(version: 2020_07_21_145152) do
 
   add_foreign_key "accounts_invitations", "accounts"
   add_foreign_key "accounts_issues", "accounts"
+  add_foreign_key "accounts_issues", "users"
   add_foreign_key "memberships", "accounts"
   add_foreign_key "memberships", "users"
 end

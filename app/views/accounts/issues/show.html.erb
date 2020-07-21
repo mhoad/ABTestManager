@@ -1,0 +1,91 @@
+<div class="screen-title">
+  <h1 class="screen-title__heading"><%= @issue.title %></h1>
+  
+  <a href="#" class="button button--primary button--large">
+    Edit Issue
+  </a>
+</div>
+
+
+<section class="issue-detail">
+  <section class="issue-detail__sidebar">
+    <h4 class="issue-detail__sidebar-heading">
+      Issue Status
+    </h4>
+    <a class="button button--small button--status">
+      <%= raw(status_icon(@issue.status)) %> <%= @issue.status.to_s.humanize %>
+      <svg class="top-app-bar__navigation-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+    </a>
+
+    <div class="issue-author">
+      <h4 class="issue-detail__sidebar-heading">
+        Issue Opened By
+      </h4>
+
+      <span class="issue-author"><%= "#{@issue.user.first_name} #{@issue.user.last_name}" %> </span>
+    </div>
+    
+
+    <h4 class="issue-detail__sidebar-heading">
+      Priority
+    </h4>
+    <div class="<%= priority_class(@issue.priority) %>"><%= @issue.priority.titleize %></div>
+    <h4 class="issue-detail__sidebar-heading">
+      Relevant Pages / Screens
+    </h4>
+    <%= "Homepage" %>
+
+
+    <h4 class="issue-detail__sidebar-heading">
+      People Following This Issue
+    </h4>
+    <div class="avatar-group">
+
+    </div>
+
+    <h4 class="issue-detail__sidebar-heading">
+      Last Updated
+    </h4>
+    <%= time_ago_in_words(@issue.updated_at) %> ago
+
+    <h4 class="issue-detail__sidebar-heading">
+      Issue Created
+    </h4>
+    <%= time_ago_in_words(@issue.created_at) %> ago
+  </section>
+  <section class="issue-detail__main">
+    
+    <p>
+       Praesent lacinia dignissim metus, sit amet feugiat ipsum. Maecenas varius orci hendrerit auctor viverra. 
+       Nulla suscipit vitae nisi at efficitur. Nulla non auctor ante. Integer congue orci sit amet quam 
+       finibus interdum. Cras fermentum arcu justo, posuere laoreet enim commodo sit amet. Curabitur 
+       venenatis feugiat ornare. 
+    </p>
+
+    <h3>Background Information</h3>
+
+    <p>
+      Sed tincidunt, quam eget fermentum tristique, nulla nisl imperdiet erat, accumsan fringilla tortor 
+      mi a nunc. Donec dignissim sodales dolor id dignissim. Sed dictum scelerisque suscipit. Phasellus 
+      quis odio sed sapien ullamcorper rhoncus vel quis velit. Morbi fringilla massa quis pretium 
+      aliquet. In interdum lectus sed libero convallis, non molestie nibh vehicula. Phasellus 
+      vel dignissim nulla, accumsan tincidunt ex. Donec ultrices facilisis magna in 
+      fringilla. Duis nec eleifend metus.
+    </p>
+
+    <p>
+      <ol>
+        <li>non molestie vehicula</li>
+        <li>sodales dolor id dignissim</li>
+        <li>Duis nec eleifend metus</li>
+      </ol>
+    </p>
+
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi quam nesciunt quia doloremque. 
+      At necessitatibus eveniet eligendi sint architecto eos animi, fuga autem facilis nesciunt rerum. 
+      Recusandae perferendis nesciunt eos.
+    </p>
+  </section>
+  
+</section>

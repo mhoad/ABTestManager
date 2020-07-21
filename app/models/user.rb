@@ -29,6 +29,7 @@ class User < ApplicationRecord
 
   has_many :memberships
   has_many :accounts, through: :memberships
+  has_many :issues
 
   rolify strict: true
 end

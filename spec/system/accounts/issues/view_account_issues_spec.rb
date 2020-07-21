@@ -4,12 +4,12 @@ RSpec.describe "Viewing account issues list", type: :system do
   let(:user) { create(:user) }
   let(:account) { create(:account) }
   let(:account_two) { create(:account) }
+  let!(:issue) { create(:accounts_issue, { account: account, user: user, title: "Account 1 Issue" })}
+  let!(:issue_two) { create(:accounts_issue, { account: account_two, user: user, title: "Account 2 Issue" })}
 
 
   before do
     AddUserToAccount.call(user: user, account: account, role: :admin)
-    Accounts::Issue.create(title: "Account 1 Issue", account: account)
-    Accounts::Issue.create(title: "Account 2 Issue", account: account_two)
 
     sign_in user
     visit account_prefix(account_dashboard_path)
