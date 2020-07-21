@@ -8,7 +8,7 @@ class AccountsController < ApplicationController
   def create
     result = CustomerSignup.call(account_params: account_params, user: current_user, role: :admin)
     if result.success?
-      redirect_to account_dashboard_path(script_name: "/#{AccountSlug::encode(result.account.slug)}")
+      redirect_to account_scoped_path(account: result.account, path: account_dashboard_path)
     else
       flash.now[:message] = result.message
       render :new

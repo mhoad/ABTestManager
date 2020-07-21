@@ -27,6 +27,7 @@ RSpec.describe "Accepting an account invitation", type: :system do
 
       expect(page).to have_content "You have joined the #{account.organization_name} account."
       expect(current_path).to eq account_prefix(account_dashboard_path)
+      # expect(current_path).to eq account_scoped_path(account: account, path: account_dashboard_path)
       
       click_link "Team"
       expect(page).to have_content "Old Mate"

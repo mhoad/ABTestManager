@@ -17,7 +17,8 @@
   </td>
   <td class="data-table__data">
     <div class="team__actions">
-      <%= link_to "View", account_dashboard_path(script_name: "/#{AccountSlug::encode(account.slug)}"), class: "team__action-link" %>
+      <%= link_to "View", account_scoped_path(account: account, path: account_dashboard_path), class: "team__action-link" %>
     </div>
   </td>
 </tr>
+

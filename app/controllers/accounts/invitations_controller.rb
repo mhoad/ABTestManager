@@ -30,7 +30,8 @@ module Accounts
       if result.success?
         sign_in(result.user)
         flash[:notice] = "You have joined the #{result.account.organization_name} account."
-        redirect_to account_dashboard_path(script_name: "/#{AccountSlug::encode(result.account.slug)}")
+
+        redirect_to account_scoped_path(account: result.account, path: account_dashboard_path)
       else
         render :accept
       end
