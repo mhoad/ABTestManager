@@ -8,8 +8,11 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_account
 
-  def ensure_valid_account
-    !current_account.nil?
+  def ensure_valid_account!
+    if current_account.nil?
+      flash[:notice] = "Please select a valid account before continuing."
+      redirect_to account_selector_path(script_name: nil)
+    end
   end
-  helper_method :ensure_valid_account
+  helper_method :ensure_valid_account!
 end

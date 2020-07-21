@@ -1,7 +1,7 @@
 module Accounts
   class InvitationsController < Accounts::BaseController
     skip_before_action :authenticate_user!, only: [:accept, :accepted]
-    skip_before_action :ensure_valid_account, only: [:accept, :accepted]
+    skip_before_action :ensure_valid_account!, only: [:accept, :accepted]
 
     layout "marketing", only: [:accept]
 
