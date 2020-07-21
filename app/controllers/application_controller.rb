@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   end
   helper_method :ensure_valid_account!
 
-  def account_scoped_path(account: nil, path: "nil")
+  def account_scoped_path(account: nil, path: nil)
     raise(ArgumentError, ":path must be a String") unless path.is_a?(String)
     return path if account.nil?
 
