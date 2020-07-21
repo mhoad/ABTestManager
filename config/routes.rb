@@ -22,5 +22,6 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :issues, controller: "accounts/issues"
   resources :accounts_registration, only: [:new, :create], controller: "accounts/registrations"
 end

@@ -21,6 +21,7 @@ class Account < ApplicationRecord
   has_many :memberships
   has_many :users, through: :memberships
   has_many :invitations, class_name: "Accounts::Invitation"
+  has_many :issues, class_name: "Accounts::Issue"
 
   resourcify # Allow granting user roles based on the account
 
