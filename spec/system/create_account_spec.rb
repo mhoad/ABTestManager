@@ -1,11 +1,10 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "Create an account", type: :system do
-
   before do
     visit "/"
     click_link "Sign up"
-    expect(current_path).to eq (new_user_registration_path)
+    expect(current_path).to eq new_user_registration_path
   end
 
   scenario "with valid details" do
@@ -26,5 +25,4 @@ RSpec.describe "Create an account", type: :system do
     expect(current_path).to include account_dashboard_path
     expect(page).to have_content "HyperGlobalMegaNet"
   end
-
 end

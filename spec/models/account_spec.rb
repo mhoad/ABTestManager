@@ -12,7 +12,7 @@
 #
 #  index_accounts_on_slug  (slug) UNIQUE
 #
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Account, type: :model do
   it "has a valid factory" do

@@ -20,7 +20,7 @@
 #  fk_rails_...  (account_id => accounts.id)
 #
 FactoryBot.define do
-  factory :accounts_invitation, class: 'Accounts::Invitation' do
+  factory :accounts_invitation, class: "Accounts::Invitation" do
     sequence(:email) { |n| "person#{n}@example.com" }
     account
     token { "123456" }

@@ -20,7 +20,7 @@
 #
 FactoryBot.define do
   factory :membership do
-    account 
-    user 
+    account
+    user
   end
 end

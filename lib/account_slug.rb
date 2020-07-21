@@ -1,9 +1,14 @@
 module AccountSlug
   PATTERN = /(\d{7,})/
-  FORMAT = '%07d'
+  FORMAT = "%07d"
 
-  def self.decode(slug) slug.to_i end
-  def self.encode(id) FORMAT % id end
+  def self.decode(slug)
+    slug.to_i
+  end
+
+  def self.encode(id)
+    FORMAT % id
+  end
 
   # We're using account id prefixes in the URL path. Rather than namespace
   # all our routes, we're "mounting" the Rails app at this URL prefix.
@@ -26,11 +31,11 @@ module AccountSlug
 
       # $1, $2, $' == script_name, slug, path_info
       if request.path_info =~ PATH_INFO_MATCH
-        request.script_name   = $1
-        request.path_info     = $'.empty? ? '/' : $'
+        request.script_name = $1
+        request.path_info = $'.empty? ? "/" : $'
 
         # Stash the account's slug.
-        env['testmanager.account.slug'] = AccountSlug.decode($2)
+        env["testmanager.account.slug"] = AccountSlug.decode($2)
       end
 
       @app.call env
@@ -44,7 +49,7 @@ module AccountSlug
     end
 
     def call(env)
-      env['rack.session.options'][:path] = env['SCRIPT_NAME'] if env['testmanager.account.slug']
+      env["rack.session.options"][:path] = env["SCRIPT_NAME"] if env["testmanager.account.slug"]
       @app.call env
     end
   end

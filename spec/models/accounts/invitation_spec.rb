@@ -19,7 +19,7 @@
 #
 #  fk_rails_...  (account_id => accounts.id)
 #
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Accounts::Invitation, type: :model do
   it "has a valid factory" do

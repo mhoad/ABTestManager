@@ -27,6 +27,6 @@ FactoryBot.define do
     job_title { "Owner" }
     organization { "HyperGlobalMegaCorp" }
     sequence(:email) { |n| "person#{n}@example.com" }
-    password {"qwerty"}
+    password { "qwerty" }
   end
 end

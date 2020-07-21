@@ -1,10 +1,9 @@
 class ApplicationController < ActionController::Base
-
   private
 
   def current_account
-    return nil if request.env['testmanager.account.slug'].nil?
-    @current_account ||= Account.find_by(slug: request.env['testmanager.account.slug'])
+    return nil if request.env["testmanager.account.slug"].nil?
+    @current_account ||= Account.find_by(slug: request.env["testmanager.account.slug"])
   end
   helper_method :current_account
 
@@ -22,8 +21,8 @@ class ApplicationController < ActionController::Base
 
     raise(ArgumentError, ":account must be a Account") unless account.is_a?(Account)
     raise(ArgumentError, ":account must be a valid Account") unless account.valid?
-    
-    return "/#{AccountSlug::encode(account.slug)}#{path}"
+
+    "/#{AccountSlug.encode(account.slug)}#{path}"
   end
   helper_method :account_scoped_path
 end

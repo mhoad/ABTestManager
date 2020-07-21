@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe CustomerSignup, type: :interactor do
   it { expect(described_class.new).to be_kind_of(Interactor::Organizer) }

@@ -48,6 +48,6 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   # Allow ActionMailer to work correctly in Testing
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = {host: "localhost", port: 3000}
   config.action_mailer.delivery_method = :test
 end

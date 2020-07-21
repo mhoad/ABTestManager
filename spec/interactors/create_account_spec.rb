@@ -1,10 +1,10 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe CreateAccount, type: :interactor do
   context "with valid attributes" do
     subject(:context) { CreateAccount.call(account_params: attributes_for(:account)) }
 
-    describe '.call' do
+    describe ".call" do
       it "succeeds" do
         expect(context).to be_a_success
       end
@@ -19,7 +19,7 @@ RSpec.describe CreateAccount, type: :interactor do
   context "with invalid attributes" do
     subject(:context) { CreateAccount.call(account_params: nil) }
 
-    describe '.call' do
+    describe ".call" do
       it "fails" do
         expect(context).to be_a_failure
       end

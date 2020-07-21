@@ -12,7 +12,7 @@
 #
 #  index_accounts_on_slug  (slug) UNIQUE
 #
-require 'securerandom'
+require "securerandom"
 
 class Account < ApplicationRecord
   before_validation :create_unique_slug, on: :create
@@ -27,6 +27,6 @@ class Account < ApplicationRecord
   private
 
   def create_unique_slug
-    self.slug = '%07d' % SecureRandom.rand(10 ** 7) if self.slug.nil?
+    self.slug = "%07d" % SecureRandom.rand(10**7) if slug.nil?
   end
 end

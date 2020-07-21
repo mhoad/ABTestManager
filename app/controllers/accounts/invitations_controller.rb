@@ -27,7 +27,7 @@ module Accounts
 
     def accepted
       result = AcceptInvitation.call(user: @user, account: @invitation.account, role: @invitation.role)
-      
+
       if result.success?
         sign_in(result.user)
 

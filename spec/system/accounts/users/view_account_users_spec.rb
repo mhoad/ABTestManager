@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "Viewing account team members", type: :system do
   let(:user_one) { create(:user) }
@@ -10,7 +10,7 @@ RSpec.describe "Viewing account team members", type: :system do
     AddUserToAccount.call(user: user_one, account: account, role: :admin)
     AddUserToAccount.call(user: user_two, account: account, role: :regular)
     sign_in user_one
-    visit account_dashboard_path(script_name: "/#{AccountSlug::encode(account.slug)}")
+    visit account_dashboard_path(script_name: "/#{AccountSlug.encode(account.slug)}")
     within ".list" do
       click_link "Team"
     end
@@ -26,12 +26,9 @@ RSpec.describe "Viewing account team members", type: :system do
     expect(page).to_not have_content user_three.email
   end
 
-
-
   private
 
   def account_prefix(path)
-    "/#{AccountSlug::encode(account.slug)}#{path}"
+    "/#{AccountSlug.encode(account.slug)}#{path}"
   end
-
 end

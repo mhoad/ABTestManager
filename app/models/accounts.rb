@@ -1,5 +1,5 @@
 module Accounts
   def self.table_name_prefix
-    'accounts_'
+    "accounts_"
   end
 end
