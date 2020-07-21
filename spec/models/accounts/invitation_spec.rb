@@ -2,13 +2,13 @@
 #
 # Table name: accounts_invitations
 #
-#  id         :bigint           not null, primary key
+#  id         :uuid             not null, primary key
 #  email      :string           not null
 #  role       :string           not null
 #  token      :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  account_id :bigint           not null
+#  account_id :uuid             not null
 #
 # Indexes
 #
@@ -35,7 +35,7 @@ RSpec.describe Accounts::Invitation, type: :model do
       it { should have_db_column(:token).of_type(:string).with_options(null: false, unique: true) }
       it { should have_db_column(:created_at).of_type(:datetime).with_options(null: false) }
       it { should have_db_column(:updated_at).of_type(:datetime).with_options(null: false) }
-      it { should have_db_column(:account_id).of_type(:integer).with_options(null: false) }
+      it { should have_db_column(:account_id).of_type(:uuid).with_options(null: false) }
     end
 
     describe "indexes" do

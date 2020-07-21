@@ -2,11 +2,11 @@
 #
 # Table name: memberships
 #
-#  id         :bigint           not null, primary key
+#  id         :uuid             not null, primary key
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  account_id :bigint           not null
-#  user_id    :bigint           not null
+#  account_id :uuid             not null
+#  user_id    :uuid             not null
 #
 # Indexes
 #
@@ -27,11 +27,11 @@ RSpec.describe Membership, type: :model do
 
   context "database" do
     describe "columns" do
-      it { should have_db_column(:id).of_type(:integer).with_options(null: false) }
+      it { should have_db_column(:id).of_type(:uuid).with_options(null: false) }
       it { should have_db_column(:created_at).of_type(:datetime).with_options(null: false) }
       it { should have_db_column(:updated_at).of_type(:datetime).with_options(null: false) }
-      it { should have_db_column(:account_id).of_type(:integer).with_options(null: false) }
-      it { should have_db_column(:user_id).of_type(:integer).with_options(null: false) }
+      it { should have_db_column(:account_id).of_type(:uuid).with_options(null: false) }
+      it { should have_db_column(:user_id).of_type(:uuid).with_options(null: false) }
     end
   end
 

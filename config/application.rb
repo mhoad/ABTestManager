@@ -36,6 +36,9 @@ module TestManager
     # Don't generate assets for Sprockets
     config.generators.assets = nil
 
+    # Use UUIDs for primary keys by default
+    config.generators.orm :active_record, primary_key_type: :uuid
+
     config.middleware.use AccountSlug::Extractor
     # config.middleware.use AccountSlug::LimitSessionToAccountSlugPath
   end

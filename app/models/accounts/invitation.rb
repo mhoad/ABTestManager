@@ -2,13 +2,13 @@
 #
 # Table name: accounts_invitations
 #
-#  id         :bigint           not null, primary key
+#  id         :uuid             not null, primary key
 #  email      :string           not null
 #  role       :string           not null
 #  token      :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  account_id :bigint           not null
+#  account_id :uuid             not null
 #
 # Indexes
 #

@@ -2,12 +2,12 @@
 #
 # Table name: roles
 #
-#  id            :bigint           not null, primary key
+#  id            :uuid             not null, primary key
 #  name          :string
 #  resource_type :string
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
-#  resource_id   :bigint
+#  resource_id   :uuid
 #
 # Indexes
 #
@@ -19,10 +19,10 @@ require 'rails_helper'
 RSpec.describe Role, type: :model do
   context "database" do
     describe "columns" do
-      it { should have_db_column(:id).of_type(:integer).with_options(null: false) }
+      it { should have_db_column(:id).of_type(:uuid).with_options(null: false) }
       it { should have_db_column(:name).of_type(:string) }
       it { should have_db_column(:resource_type).of_type(:string) }
-      it { should have_db_column(:resource_id).of_type(:integer) }
+      it { should have_db_column(:resource_id).of_type(:uuid) }
       it { should have_db_column(:created_at).of_type(:datetime).with_options(null: false) }
       it { should have_db_column(:updated_at).of_type(:datetime).with_options(null: false) }
     end

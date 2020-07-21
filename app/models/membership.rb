@@ -2,11 +2,11 @@
 #
 # Table name: memberships
 #
-#  id         :bigint           not null, primary key
+#  id         :uuid             not null, primary key
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  account_id :bigint           not null
-#  user_id    :bigint           not null
+#  account_id :uuid             not null
+#  user_id    :uuid             not null
 #
 # Indexes
 #

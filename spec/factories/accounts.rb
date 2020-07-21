@@ -2,7 +2,7 @@
 #
 # Table name: accounts
 #
-#  id                :bigint           not null, primary key
+#  id                :uuid             not null, primary key
 #  organization_name :string           not null
 #  slug              :integer          not null
 #  created_at        :datetime         not null
