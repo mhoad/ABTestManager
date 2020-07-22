@@ -2,7 +2,7 @@ module Accounts
   class IssuePolicy < ApplicationPolicy
     # everyone can see any issue
     def show?
-      true
+      user.accounts.include? record.account
     end
 
     def edit?
