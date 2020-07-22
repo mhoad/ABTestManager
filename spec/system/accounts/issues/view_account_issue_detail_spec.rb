@@ -9,6 +9,8 @@ RSpec.describe "Viewing a single account issues", type: :system do
   before do
     AddUserToAccount.call(user: admin_user, account: account, role: :admin)
     AddUserToAccount.call(user: regular_user, account: account, role: :regular)
+    AddUserRoleToAccount.call(user: admin_user, account: account, role: :admin)
+    AddUserRoleToAccount.call(user: regular_user, account: account, role: :regular)
   end
 
   context "as an account admin user" do
@@ -32,7 +34,7 @@ RSpec.describe "Viewing a single account issues", type: :system do
 
   context "as a regular user" do
     before do
-      sign_in admin_user
+      sign_in regular_user
       visit account_prefix(issues_path)
       click_on(class: 'issue-card')
     end
@@ -45,8 +47,7 @@ RSpec.describe "Viewing a single account issues", type: :system do
     end
 
     scenario "does not show the edit button" do
-      # FIXME WHEN PERMISSIONS ARE DONE
-      # expect(page).to_not have_link "Edit Issue"
+      expect(page).to_not have_link "Edit Issue"
     end
   end
 
