@@ -1,15 +1,15 @@
 module Accounts
-  class IssuePolicy < ApplicationPolicy
+  class IssuePolicy < BasePolicy
     def show?
-      user.accounts.include? record.account
+      user_is_account_member?
     end
 
     def edit?
-      (user.has_role?(:admin, record.account)) || (record.user_id == user.id)
+      user_is_account_admin? || user_owns_record?
     end
   
     def update?
-      user.has_role?(:admin, record.account) || (record.user_id == user.id)
+      user_is_account_admin? || user_owns_record?
     end
   end
 end
