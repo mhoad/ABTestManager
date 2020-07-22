@@ -1,5 +1,17 @@
 module Accounts
   class BasePolicy < ApplicationPolicy
+    def show?
+      user_is_account_member?
+    end
+
+    def edit?
+      user_is_account_admin? || user_owns_record?
+    end
+  
+    def update?
+      user_is_account_admin? || user_owns_record?
+    end
+
     private
 
     def user_is_account_admin?
