@@ -1,7 +1,8 @@
 <div class="screen-title">
   <h1 class="screen-title__heading">Team</h1>
-
-  <%= link_to "Add User", new_invitation_path, class: "button button--primary button--large" %>
+  <% if allowed_to?(:new?, current_account.invitations.new) %>
+    <%= link_to "Add User", new_invitation_path, class: "button button--primary button--large" %>
+  <% end %>
 </div>
 
 

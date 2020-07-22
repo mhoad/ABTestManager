@@ -1,7 +1,6 @@
 module Accounts
-  class InvitationsController < Accounts::BaseController
-    skip_before_action :authenticate_user!, only: [:accept, :accepted]
-    skip_before_action :ensure_valid_account!, only: [:accept, :accepted]
+  class InvitationsController < BaseController
+    skip_before_action :authorize_user!, only: [:accept, :accepted]
 
     before_action :find_invitation, only: [:accept, :accepted]
     before_action :find_or_create_user, only: [:accepted]
@@ -10,6 +9,7 @@ module Accounts
 
     def new
       @invitation = current_account.invitations.new
+      authorize!(@invitation)
     end
 
     def create
@@ -40,6 +40,11 @@ module Accounts
     end
 
     private
+
+    def user_not_authorized
+      flash[:alert] = "You are not authorized to perform this action."
+      redirect_to(request.referrer || account_team_path)
+    end
 
     def find_or_create_user
       if user_signed_in?
