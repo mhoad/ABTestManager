@@ -2,14 +2,20 @@ require 'rails_helper'
 
 describe Accounts::IssuePolicy do
   let(:user) { create :user }
-  # `context` is the authorization context
   let(:context) { { user: user } }
-
   let(:account) { create(:account) }
-  let!(:record) { create(:accounts_issue, { account: account, user: user } )}
+  let!(:record) { create(:accounts_issue, { account: account } )}
 
   context "as a regular user not associated with the account" do
     describe_rule :show? do
+      failed
+    end
+
+    describe_rule :edit? do
+      failed
+    end
+
+    describe_rule :update? do
       failed
     end
   end
@@ -20,12 +26,36 @@ describe Accounts::IssuePolicy do
     context "with a :regular permission role" do
       before { AddUserRoleToAccount.call(user: user, account: account, role: :regular) }
 
-      describe_rule :show? do
-        succeed
+      context "when the user owns the record" do
+        before { record.user_id = user.id }
+
+        describe_rule :show? do
+          succeed
+        end
+
+        describe_rule :edit? do
+          succeed
+        end
+
+        describe_rule :update? do
+          succeed
+        end
       end
 
-      describe_rule :edit? do
-        failed
+      context "when the user does not own the record" do
+        before { record.user_id = "123" }
+
+        describe_rule :show? do
+          succeed
+        end
+
+        describe_rule :edit? do
+          failed
+        end
+
+        describe_rule :update? do
+          failed
+        end
       end
     end
 
@@ -39,29 +69,10 @@ describe Accounts::IssuePolicy do
       describe_rule :edit? do
         succeed
       end
+
+      describe_rule :update? do
+        succeed
+      end
     end
   end
-
-
-  # describe_rule :show? do
-  #   failed "for a user not associated with the account"
-
-  #   succeed "when the user is associated with the account" do
-  #     before { AddUserToAccount.call(user: user, account: account) }
-  #   end
-  # end
-
-  # describe_rule :edit? do
-  #   failed "for a user not associated with the account"
-
-  #   context "user is associated with the account" do
-  #     before { AddUserToAccount.call(user: user, account: account) }
-
-  #     failed "if the user is not an account admin"
-
-  #     succeed "when the user is an account admin" do
-  #       before { AddUserRoleToAccount.call(user: user, account: account, role: :admin) }
-  #     end
-  #   end
-  # end
 end
